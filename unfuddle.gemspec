@@ -15,6 +15,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Unfuddle::VERSION
 
+  gem.add_dependency 'faraday', '~> 0.8'
+  gem.add_dependency 'multi_json', '~> 1.3'
+
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
 end
