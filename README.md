@@ -2,6 +2,23 @@
 
 Unfuddle API wrapper
 
+
+## Usage
+
+    Unfuddle.configure do |config|
+
+      config.account  = 'subdomain'
+      config.user     = 'username'
+      config.password = 'password'
+
+    end
+
+    c = Unfuddle.client
+
+    c.activity
+    c.activity({start_date: Date.today, limit: 5})
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -16,8 +33,10 @@ Or install it yourself as:
 
     $ gem install unfuddle
 
-## Usage
+## TODO
 
+1. Add more the rest of the endpoints
+2. Tests...
 
 
 ## Contributing
