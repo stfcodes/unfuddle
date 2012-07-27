@@ -4,20 +4,20 @@ Unfuddle API wrapper
 
 
 ## Usage
+```ruby
+Unfuddle.configure do |config|
 
-    Unfuddle.configure do |config|
+  config.account  = 'subdomain'
+  config.user     = 'username'
+  config.password = 'password'
 
-      config.account  = 'subdomain'
-      config.user     = 'username'
-      config.password = 'password'
+end
 
-    end
+c = Unfuddle.client
 
-    c = Unfuddle.client
-
-    c.activity
-    c.activity({start_date: Date.today, limit: 5})
-
+c.activity
+c.activity({start_date: Date.today, limit: 5})
+```
 
 ## Installation
 
