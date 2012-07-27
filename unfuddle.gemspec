@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/unfuddle/version', __FILE__)
+require File.expand_path('../lib/unfuddle/core/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["shuriu"]

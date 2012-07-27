@@ -1,4 +1,4 @@
-require 'unfuddle/version'
+require 'unfuddle/core/version'
 require 'unfuddle/response/parse_json'
 
 module Unfuddle
@@ -15,7 +15,7 @@ module Unfuddle
       :password
     ] unless defined? CONFIG_KEYS
 
-    API_ROOT      = "/api/v1" unless defined? API_ROOT
+    API_ROOT      = "/api/v1/" unless defined? API_ROOT
     API_RESPONSE  = ".json"    unless defined? API_RESPONSE
 
     attr_accessor *CONFIG_KEYS

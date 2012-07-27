@@ -1,6 +1,6 @@
-require "unfuddle/version"
-require 'unfuddle/config'
-require 'unfuddle/client'
+require "unfuddle/core/version"
+require 'unfuddle/core/config'
+require 'unfuddle/core/client'
 
 module Unfuddle
   class << self

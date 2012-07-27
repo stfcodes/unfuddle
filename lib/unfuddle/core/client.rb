@@ -1,5 +1,5 @@
-require 'unfuddle/config'
-require 'unfuddle/connectable'
+require 'unfuddle/core/config'
+require 'unfuddle/core/connectable'
 require 'unfuddle/account'
 
 module Unfuddle
@@ -13,6 +13,12 @@ module Unfuddle
       Unfuddle::Config.keys.each do |key|
         instance_variable_set("@#{key}", options[key] || Unfuddle.options[key])
       end
+    end
+
+    def credentials?
+      Unfuddle::Config.keys.map do |key|
+        instance_variable_get("@#{key}")
+      end.all?
     end
 
   end
