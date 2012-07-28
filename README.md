@@ -1,6 +1,10 @@
 # Unfuddle
 
-Unfuddle API wrapper
+Unfuddle API wrapper.
+
+Only get requests with json response formats supported for the moment.
+
+Supported endpoints: Account, Projects, People, Projects, Tickets.
 
 
 ## Usage

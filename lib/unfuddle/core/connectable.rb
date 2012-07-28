@@ -4,21 +4,21 @@ require 'unfuddle/core/config'
 module Unfuddle
   module Connectable
 
-    def delete(path, params = {})
-      request(:delete, path, params)
-    end
-
     def get(path, params = {})
       request(:get, path, params)
     end
 
-    def post(path, params = {})
-      request(:post, path, params)
-    end
+    # def post(path, params = {})
+    #   request(:post, path, params)
+    # end
 
-    def put(path, params = {})
-      request(:put, path, params)
-    end
+    # def put(path, params = {})
+    #   request(:put, path, params)
+    # end
+
+    # def delete(path, params = {})
+    #   request(:delete, path, params)
+    # end
 
     private
 
@@ -31,9 +31,9 @@ module Unfuddle
       end
 
       def request(method, endpoint, params = {})
-        uri = Unfuddle::Config::API_ROOT
-        uri += endpoint
-        uri += Unfuddle::Config::API_RESPONSE
+        path = Unfuddle::Config::API_ROOT
+        path += endpoint
+        path += Unfuddle::Config::API_RESPONSE
 
         request_headers = {}
         if credentials?
@@ -42,7 +42,7 @@ module Unfuddle
           raise 'You need to authenticate first!'
         end
 
-        response = connection.run_request(method.to_sym, endpoint, nil, request_headers) do |request|
+        response = connection.run_request(method.to_sym, path, nil, request_headers) do |request|
           unless params.empty?
             case request.method
             when :post, :put
@@ -54,7 +54,7 @@ module Unfuddle
           yield request if block_given?
         end.env
 
-        response
+        @cache = response[:body] if response
       end
 
   end

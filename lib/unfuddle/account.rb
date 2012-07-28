@@ -1,9 +1,11 @@
 require 'unfuddle/util/date'
-require 'unfuddle/core/config'
 
 module Unfuddle
   module Account
 
+    def account_info
+      get("account")
+    end
 
     # The activity for all Projects to which the requesting person has access.
     # If no dates are given, activity for the last two weeks is returned.
@@ -11,8 +13,7 @@ module Unfuddle
     # params = [:start_date, :end_date, :limit]
     def activity(params = {})
       Unfuddle::Util.prepare_date(params[:start_date] ) if params[:start_date]
-
-      params = {:start_date => Unfuddle::Util.prepare_date(Date.today)}.merge params
+      params = {start_date: Unfuddle::Util.prepare_date(Date.today)}.merge params
 
       get("account/activity", params)
     end
@@ -22,7 +23,7 @@ module Unfuddle
     # instances of the given query string.
 
     # params = [:query, :start_index, :end_index, :limit, :filter]
-    def search(params={})
+    def account_search(params={})
       params[:filter] = if params[:filter]
         params[:filter].join(",")                 if params[:filter].is_a? Array
         params[:filter].split(/[^\w]+/).join(',') if params[:filter].is_a? String
